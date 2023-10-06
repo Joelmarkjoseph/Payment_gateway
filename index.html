@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhonePe Payment Example</title>
+    <!-- Include PhonePe button script -->
+    <script src="https://assets.phonepe.com/button/checkout-button.js"></script>
+</head>
+<body>
+    <h1>PhonePe Payment Example</h1>
+    <!-- Create a button to trigger PhonePe payment -->
+    <button id="phonepe-button">Pay with PhonePe</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const phonePeButton = document.getElementById('phonepe-button');
+            const merchantId = 'YOUR_PHONEPE_MERCHANT_ID';
+            const amount = 1; // Amount in paisa (e.g., 100 paisa = 1 INR)
+
+            phonePeButton.addEventListener('click', () => {
+                PhonePeCheckout.configure({
+                    merchant_id: merchantId,
+                    order_id: 'UNIQUE_ORDER_ID', // Replace with your unique order ID
+                    amount: amount,
+                    currency: 'INR',
+                    return_url: 'YOUR_RETURN_URL',
+                    notify_url: 'YOUR_NOTIFY_URL',
+                });
+
+                PhonePeCheckout.open();
+            });
+        });
+    </script>
+</body>
+</html>
